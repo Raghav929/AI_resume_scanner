@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}How it scores — Shortlist{% endblock %}
+
+{% block content %}
+<section class="hero hero-tight">
+  <p class="eyebrow">Methodology</p>
+  <h1>Two explainable signals, one score.</h1>
+  <p class="hero-sub">
+    No black box: every candidate's score is the weighted sum of two
+    numbers you can also see broken out individually on the results page.
+  </p>
+</section>
+
+<section class="notes-grid">
+  <div class="panel note-card">
+    <span class="index-tag">A</span>
+    <h3>JD relevance — 60%</h3>
+    <p>A TF-IDF vector is built from the job description and every resume,
+    then cosine similarity measures how closely each resume's overall
+    language matches the JD's. This captures phrasing and context beyond
+    a fixed keyword list — responsibilities, domain terms, tools mentioned
+    in passing.</p>
+  </div>
+
+  <div class="panel note-card">
+    <span class="index-tag">B</span>
+    <h3>Skill coverage — 40%</h3>
+    <p>Both the job description and each resume are scanned against a
+    curated taxonomy of ~120 skills (languages, frameworks, cloud, data,
+    soft skills). The score is the percentage of the JD's required skills
+    that were actually found in the resume — shown to you as Matched and
+    Missing chips.</p>
+  </div>
+
+  <div class="panel note-card note-card-wide">
+    <span class="index-tag">C</span>
+    <h3>Why weight it this way</h3>
+    <p>Skill lists alone miss context — a resume can list "Python" once
+    in a tools section with no depth. Pure text similarity alone can be
+    fooled by resumes that are simply long or keyword-stuffed. Combining
+    both means a resume has to be both textually relevant <em>and</em>
+    actually cover the required skills to rank highly.</p>
+  </div>
+
+  <div class="panel note-card note-card-wide">
+    <span class="index-tag">D</span>
+    <h3>Honest limitations</h3>
+    <p>This is a heuristic tool, not a hiring decision-maker. It can't
+    judge quality of experience, verify claims, or catch skills phrased
+    in ways outside the taxonomy. PDF text extraction can also struggle
+    with heavily designed resume templates (multi-column layouts, text
+    inside images). Always have a human review the shortlist.</p>
+  </div>
+</section>
+{% endblock %}

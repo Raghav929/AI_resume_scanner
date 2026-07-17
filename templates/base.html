@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Shortlist — Smart Resume Screening{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="scanline-overlay" aria-hidden="true"></div>
+<div class="page">
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('home') }}">
+      <!-- <span class="brand-mark"></span> -->
+      <span class="brand-name">resumescan</span>
+    </a>
+    <nav class="site-nav">
+      <a href="{{ url_for('home') }}">Back</a>
+      <a href="{{ url_for('about') }}">How it scores</a>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <!-- <span>Shortlist · Smart Resume Screening &amp; Candidate Ranking Tool</span> -->
+    <!-- <span class="footer-dim">Flask + scikit-learn · Runs locally, nothing leaves your machine</span> -->
+  </footer>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

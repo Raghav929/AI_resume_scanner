@@ -1,0 +1,25 @@
+Priya Sharma
+priya.sharma@example.com | +1 (555) 234-5678
+
+Summary
+Backend engineer with 5 years of experience building scalable APIs and
+cloud-native services.
+
+Skills
+Python, SQL, Flask, Django, PostgreSQL, Docker, AWS, Git, CI/CD,
+Kubernetes, Agile, Scrum, Communication, Teamwork
+
+Experience
+Senior Backend Engineer — Northwind Systems (2021-Present)
+- Built and maintained REST APIs in Flask serving 2M+ requests/day
+- Migrated legacy services to Docker containers deployed on AWS
+- Set up CI/CD pipelines with Jenkins and GitHub Actions
+- Optimized PostgreSQL queries, reducing average latency by 40%
+
+Backend Developer — Alderbridge Tech (2019-2021)
+- Developed internal tools using Django and PostgreSQL
+- Collaborated with frontend engineers on React-facing API contracts
+- Participated in Agile sprint planning and code reviews
+
+Education
+B.S. Computer Science, State University

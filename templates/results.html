@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Ranked candidates — Shortlist{% endblock %}
+
+{% block content %}
+<section class="hero hero-tight">
+  <p class="eyebrow">{{ total }} candidate{{ "s" if total != 1 else "" }} screened</p>
+  <h1>Ranked shortlist</h1>
+  <p class="hero-sub">Sorted by combined score — 60% job-description relevance, 40% required-skill coverage.</p>
+</section>
+
+{% if skipped %}
+<div class="alert-box alert-box-mild">
+  <strong>Skipped {{ skipped|length }} file{{ "s" if skipped|length != 1 else "" }}:</strong>
+  <ul>{% for s in skipped %}<li>{{ s }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+
+<section class="board">
+  {% for r in results %}
+  <article class="candidate-card">
+    <div class="rank-col">
+      <span class="rank-num">#{{ r.rank }}</span>
+      <div class="meter" aria-label="match score">
+        {% for i in range(10) %}
+        <span class="meter-bar {{ 'meter-bar-filled' if i < (r.final_score / 10)|round(0, 'floor') else '' }}
+          {{ 'meter-high' if r.final_score >= 70 else ('meter-mid' if r.final_score >= 40 else 'meter-low') }}"></span>
+        {% endfor %}
+      </div>
+      <span class="score-value">{{ r.final_score }}%</span>
+    </div>
+
+    <div class="candidate-body">
+      <div class="candidate-head">
+        <h3>{{ r.candidate_name }}</h3>
+        <span class="filename-tag">{{ r.filename }}</span>
+      </div>
+
+      <div class="contact-row">
+        {% if r.email %}<span>✉ {{ r.email }}</span>{% endif %}
+        {% if r.phone %}<span>☎ {{ r.phone }}</span>{% endif %}
+        {% if r.years_experience %}<span>{{ r.years_experience }}+ yrs experience</span>{% endif %}
+      </div>
+
+      <div class="subscore-row">
+        <span class="subscore">JD relevance <b>{{ r.tfidf_score }}%</b></span>
+        <span class="subscore">Skill coverage <b>{{ r.skill_score }}%</b></span>
+      </div>
+
+      {% if r.matched_skills %}
+      <div class="skill-block">
+        <span class="skill-label">Matched</span>
+        <div class="skill-chips">
+          {% for s in r.matched_skills %}<span class="chip chip-match">{{ s }}</span>{% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if r.missing_skills %}
+      <div class="skill-block">
+        <span class="skill-label">Missing</span>
+        <div class="skill-chips">
+          {% for s in r.missing_skills %}<span class="chip chip-missing">{{ s }}</span>{% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<a class="submit-btn inline-btn" href="{{ url_for('home') }}">← Screen another batch</a>
+{% endblock %}

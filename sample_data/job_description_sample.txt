@@ -1,0 +1,21 @@
+Backend Engineer — Job Description
+
+We are looking for a Backend Engineer with 3+ years of experience to join
+our growing engineering team.
+
+Responsibilities:
+- Design and build REST APIs using Python and Flask or Django
+- Work with PostgreSQL and Redis for data storage and caching
+- Deploy and maintain services on AWS using Docker and CI/CD pipelines
+- Collaborate with the frontend team on API contracts (React)
+- Write unit tests and participate in code review
+
+Required skills:
+- Python, SQL, Flask or Django
+- PostgreSQL, Docker, AWS
+- Git and CI/CD experience
+- Strong communication and teamwork skills
+
+Nice to have:
+- Experience with Kubernetes, GraphQL, or machine learning
+- Familiarity with Agile/Scrum workflows

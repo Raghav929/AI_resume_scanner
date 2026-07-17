@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Screen candidates — Shortlist{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">Point it at a role, feed it a stack of resumes</p>
+  <h1>Rank every candidate<br>against the job, instantly.</h1>
+  <p class="hero-sub">
+    Paste a job description, drop in resumes (PDF, DOCX, or TXT), and get a
+    ranked shortlist scored on textual relevance and actual skill overlap —
+    with the reasoning shown, not hidden.
+  </p>
+</section>
+
+{% if errors %}
+<div class="alert-box">
+  <strong>Couldn't run that screening:</strong>
+  <ul>
+    {% for e in errors %}<li>{{ e }}</li>{% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<form class="panel screen-form" action="{{ url_for('rank') }}" method="POST" enctype="multipart/form-data">
+  <div class="panel-head">
+    <span class="index-tag">01</span>
+    <div>
+      <h2>Job description</h2>
+      <p>The fuller this is — responsibilities, required skills, tools — the more accurate the ranking.</p>
+    </div>
+  </div>
+  <textarea name="job_description" class="jd-input" rows="10"
+    placeholder="e.g. We're hiring a backend engineer with 3+ years of experience in Python, Flask or Django, PostgreSQL, and AWS. Experience with Docker and CI/CD pipelines is a plus...">{{ job_description or "" }}</textarea>
+
+  <div class="panel-head panel-head-spaced">
+    <span class="index-tag">02</span>
+    <div>
+      <h2>Candidate resumes</h2>
+      <p>Upload up to 30 files — .pdf, .docx, or .txt.</p>
+    </div>
+  </div>
+
+  <label class="dropzone" id="dropzone">
+    <input type="file" name="resumes" id="fileInput" multiple accept=".pdf,.docx,.txt">
+    <span class="dropzone-icon">⇪</span>
+    <span class="dropzone-text">Drop resumes here, or click to browse</span>
+    <span class="dropzone-list" id="fileList"></span>
+  </label>
+
+  <button class="submit-btn" type="submit">Rank candidates →</button>
+</form>
+
+<section class="sample-note">
+  <span class="index-tag">03</span>
+  <div>
+    <h3>No resumes handy?</h3>
+    <p>A few sample resumes and a sample job description are included in
+    <code>sample_data/</code> in this project — upload those to try the tool
+    immediately.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}{% endblock %}
